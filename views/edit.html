@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <article>
+    <form class="" action="#" method="post">
+      <div class="title">
+        Edit Restaurant
+      </div>
+      <input type="hidden" name="name" value="{{restaurant.id}}">
+      <label for="name" class="blocking">Name</label>
+      <input type="input" name="name" required maxlength="40" value="{{restaurant.name}}" placeholder="Restaurant Name">
+      <br />
+      <label for="location" class="blocking">Location</label>
+      <input type="input" name="location" required maxlength="40" value="{{restaurant.city}}" placeholder="City">
+      <select name="state" required>
+        {% autoescape false %}
+          {% for s in stateOptions %}
+            {{s}}
+          {% endfor %}
+        {% endautoescape %}
+      </select>
+      <br />
+      <label for="cuisine">Cuisine</label>
+      <select class="" required name="cuisine">
+        {% autoescape false %}
+          {% for c in cuisineOptions %}
+            {{c}}
+          {% endfor %}
+        {% endautoescape %}
+      </select>
+      <br />
+      <label for="">Rating</label>
+      <input name="rating" type="range" min="0" max="5" value="{{restaurant.rating}}" step="0.5" id="rating">
+      <div class="rateit" data-rateit-backingfld="#rating"></div><br />
+      <br />
+      <label for="image">Image</label>
+      <input type="text" name="image" value="{{restaurant.image}}">
+      <input type="file" name="image">
+      <br />
+      <textarea name="bio" required rows="8" cols="40" placeholder="Short Bio">{{restaurant.description}}</textarea>
+      <input type="submit" name="submit" value="Submit">
+    </form>
+    <a href="/"><button class="cancel">Cancel</button></a>
+  </article>
+{% endblock %}
