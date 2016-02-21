@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var indexLogic = require('./logicHandling/index.js');
 var showLogic = require('./logicHandling/show.js');
+var editLogic = require('./logicHandling/edit.js');
 var path = require('path');
 
 /* GET home page. */
@@ -16,6 +17,9 @@ router.get('/restaurants/new/', function(req, res, next) {
 });
 router.get('/restaurants/:restaurant', function(req, res, next) {
   res.render('show', showLogic(req.params.restaurant));
+});
+router.get('/restaurants/:restaurant/edit', function(req, res, next) {
+  res.render('edit', editLogic(req.params.restaurant));
 });
 router.get('/*', function(req, res, next) {
   console.log(__dirname);
