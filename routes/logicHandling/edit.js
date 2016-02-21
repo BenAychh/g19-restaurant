@@ -48,7 +48,7 @@ module.exports = function(name) {
   });
   return {
     title: 'Fake Yelp! - ' + restaurantResults[0].name,
-    header: restaurantResults[0].name,
+    header: 'Editing: ' + restaurantResults[0].name,
     stylesheet: '/stylesheets/new.css',
     restaurant: restaurantResults[0],
     stateOptions: stateOptions,
