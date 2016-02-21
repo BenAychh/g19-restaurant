@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <article>
+    {% for r in restaurants %}
+      <section>
+        <h2>{{r.name}}</h2>
+          <img src="{{r.image}}" alt="r.cuisine" />
+        <p>
+          {{r.cuisine}}
+        </p>
+        <p>
+          {{r.city}}, {{r.state}}
+        </p>
+        <div class="rateit" data-rateit-value="{{r.rating}}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+      </section>
+    {% endfor %}
+  </article>
+{% endblock %}
