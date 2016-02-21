@@ -1,0 +1,50 @@
+article {
+  width: 80%;
+  border: 1px solid black;
+  margin: 50px auto;
+  position: relative;
+  padding: 20px 10px;
+}
+article .title {
+  position: absolute;
+  background: rgb(255, 255, 255);
+  top: -9px;
+  left: 10px;
+}
+.blocking {
+  display: block;
+}
+input {
+  display: block;
+}
+select {
+  display: block;
+}
+input[type=range] {
+  display: block;
+  margin-bottom: 10px;
+}
+input[type=submit] {
+  width: 100px;
+  height: 35px;
+  font-size: 20px;
+  border: 0;
+  margin-right: 15px;
+  background-color: rgb(0, 201, 26);
+  display: inline;
+  position: absolute;
+  bottom: 20px;
+  right: 130px;
+}
+button {
+  width: 100px;
+  height: 35px;
+  font-size: 20px;
+  border: 0;
+  margin-right: 15px;
+  background-color: rgb(238, 64, 0);
+  margin-right: 0;
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+}
