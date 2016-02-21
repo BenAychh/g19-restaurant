@@ -10,5 +10,8 @@ router.get('/', function(req, res, next) {
 router.get('/show/:restaurant', function(req, res, next) {
   res.render('show', showLogic(req.params.restaurant));
 });
+router.get('/show/images/:image', function(req, res, next) {
+  res.redirect('../../images/' + req.params.image);
+});
 
 module.exports = router;

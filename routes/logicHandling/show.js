@@ -5,7 +5,7 @@ module.exports = function(name) {
   var restaurantResults = restaurants({name: decodedName});
   return {
     'title': 'Fake Yelp! - ' + restaurantResults[0].name,
-    'header': 'gTables',
+    'header': restaurantResults[0].name,
     'stylesheet': '/stylesheets/show.css',
-    'restaurants': restaurantResults};
+    'restaurant': restaurantResults[0]};
 };

@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <article>
+    <img src="{{restaurant.image}}" alt="{{restaurant.cuisine}}" />
+    <p>
+      {{restaurant.cuisine}} cuisine<br />
+      Located in {{restaurant.city}}, {{restaurant.state}}
+    </p>
+    <p>
+      {{restaurant.description}}
+    </p>
+    <div class="rateit stars" data-rateit-value="{{restaurant.rating}}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+    <button type="button" class="edit" name="button">Edit</button>
+    <button type="button" class="delete" name="button">Delete</button>
+  </article>
+{% endblock %}
