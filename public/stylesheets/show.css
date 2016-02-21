@@ -1,8 +1,9 @@
 img {
   float: left;
-  max-width: 40%;
-  min-width: 40%;
+  max-width: 35%;
+  min-width: 35%;
   margin-right: 10%;
+  margin-left: 5%;
 }
 p {
   margin-bottom: 1em;
