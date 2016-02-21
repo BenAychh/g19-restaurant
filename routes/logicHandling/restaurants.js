@@ -24,7 +24,8 @@ var restaurants = [
     cuisine: 'Mexican',
     city: 'Denver',
     state: 'CO',
-    rating: 5
+    rating: 5,
+    description: 'Los Tacos restaurants are owned by Fidel and Martha Leos.  Los Tacos was established in FebrFideluary 1986, and Fidel was the first person to bring soft shell tacos, a traditional Mexican dish, to the Pasadena area.  Currently, Los Tacos has a location in San Gabriel and Pasadena and serves authentic Mexican cuisine in a clean and friendly atmosphere.'
   },
   {
     name: 'Burger Bar',
@@ -32,7 +33,8 @@ var restaurants = [
     cuisine: 'American',
     city: 'Seattle',
     state: 'WA',
-    rating: 5
+    rating: 5,
+    description: ''
   },
   {
     name: 'Pasta Freddy\'s',
