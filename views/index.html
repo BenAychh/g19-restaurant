@@ -2,7 +2,7 @@
 {% block content %}
   <article>
     {% for r in restaurants %}
-    <a href="/show/{{r.name}}">
+    <a href="/restaurants/{{r.name}}">
       <section>
         <h2>{{r.name}}</h2>
           <img src="{{r.image}}" alt="r.cuisine" />
