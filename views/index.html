@@ -2,6 +2,7 @@
 {% block content %}
   <article>
     {% for r in restaurants %}
+    <a href="/show/{{r.name}}">
       <section>
         <h2>{{r.name}}</h2>
           <img src="{{r.image}}" alt="r.cuisine" />
@@ -13,6 +14,7 @@
         </p>
         <div class="rateit" data-rateit-value="{{r.rating}}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
       </section>
+    </a>
     {% endfor %}
   </article>
 {% endblock %}

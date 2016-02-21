@@ -3,7 +3,11 @@ article {
   width: 90%;
   position: relative;
 }
-article section {
+article a {
+  padding: 0;
+  margin: 0;
+}
+article a section {
   width: 30%;
   border: 1px solid black;
   box-sizing: border-box;
@@ -15,20 +19,20 @@ article section {
   height: 300px;
   font-size: 1em;
 }
-article section:nth-child(3n) {
+article a:nth-child(3n) section {
   margin-right: 0;
 }
-article section h2 {
+article a section h2 {
   padding: 2px;
   font-size: 24px;
 }
-article section img {
+article a section img {
   max-width: 98%;
   max-height: 70%;
   margin: 10px auto;
   display: block;
 }
-article section .rateit {
+article a section .rateit {
   position: absolute;
   bottom: 0;
   right: 0;
