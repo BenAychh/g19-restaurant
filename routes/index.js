@@ -22,7 +22,6 @@ router.get('/restaurants/:restaurant/edit', function(req, res, next) {
   res.render('edit', editLogic(req.params.restaurant));
 });
 router.get('/*', function(req, res, next) {
-  console.log(__dirname);
   var imageIndex = req.path.indexOf('/images/');
   if (imageIndex !== -1) {
     var imageName = req.path.substring(imageIndex + 8);
