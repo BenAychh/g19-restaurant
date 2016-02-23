@@ -7,7 +7,7 @@ var path = require('path');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', indexLogic());
+  indexLogic(res);
 });
 router.get('/restaurants/', function(req, res, next) {
   res.redirect('/');
@@ -16,7 +16,7 @@ router.get('/restaurants/new/', function(req, res, next) {
   res.sendFile('new.html', { root: path.join(__dirname, '../public/') });
 });
 router.get('/restaurants/:restaurant', function(req, res, next) {
-  res.render('show', showLogic(req.params.restaurant));
+  showLogic(res, req.params.restaurant);
 });
 router.get('/restaurants/:restaurant/edit', function(req, res, next) {
   res.render('edit', editLogic(req.params.restaurant));
