@@ -1,15 +1,15 @@
 {% extends 'layout.html' %}
 {% block content %}
   <article>
-    <img src="{{restaurants[0].image}}" alt="{{restaurants[0].cuisine}}" />
+    <img src="{{restaurant.image}}" alt="{{restaurant.cuisine}}" />
     <p>
-      {{restaurants[0].cuisine}} cuisine<br />
-      Located in {{restaurants[0].city}}, {{restaurants[0].state}}
+      {{restaurant.cuisine}} cuisine<br />
+      Located in {{restaurant.city}}, {{restaurant.state}}
     </p>
     <p>
-      {{restaurants[0].description}}
+      {{restaurant.description}}
     </p>
-    <div class="rateit stars" data-rateit-value="{{restaurants[0].rating}}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+    <div class="rateit stars" data-rateit-value="{{restaurant.rating}}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
     <a href="edit/"><button class="edit">Edit</button></a>
     <a href="#"><button class="delete">Delete</button></a>
   </article>

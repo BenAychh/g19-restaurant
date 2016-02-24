@@ -19,7 +19,7 @@ router.get('/restaurants/:restaurant', function(req, res, next) {
   showLogic(res, req.params.restaurant);
 });
 router.get('/restaurants/:restaurant/edit', function(req, res, next) {
-  res.render('edit', editLogic(req.params.restaurant));
+  editLogic(res, req.params.restaurant);
 });
 router.get('/*', function(req, res, next) {
   var imageIndex = req.path.indexOf('/images/');

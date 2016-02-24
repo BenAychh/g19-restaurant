@@ -1,10 +1,16 @@
 var restaurants = require('./restaurantsdb.js');
 module.exports = function(res, name) {
-  var options = {
-    'title': 'Fake Yelp! - {name}',
-    'header': '{name}',
-    'stylesheet': '/stylesheets/show.css',
-  };
   var parameters = {name: decodeURI(name)};
-  restaurants(res, 'show', options, parameters)
+  restaurants(display, res, parameters);
 };
+function display(res, listOfRestaurants) {
+  console.log(listOfRestaurants[0]);
+  var name = listOfRestaurants[0].name;
+  var params = {
+    'title': 'Fake Yelp! - ' + name,
+    'header': name,
+    'stylesheet': '/stylesheets/show.css',
+    'restaurant': listOfRestaurants[0]
+  };
+  res.render('show', params);
+}
