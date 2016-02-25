@@ -1,3 +1,5 @@
+var fs = require('fs');
+var path = require('path');
 module.exports = {
   states: {
     AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas',
@@ -17,5 +19,15 @@ module.exports = {
   cuisines: {
     American: 'American', Italian: 'Italian', Thai: 'Thai',
     Vietnamese: 'Vietnamese', Mexican: 'Mexican'
-  }
+  },
+  images: getImages()
 };
+function getImages() {
+  var images = {};
+  fs.readdir(path.join(__dirname, '../../public/images/restaurants'), function(err, list) {
+    list.forEach(function(file) {
+      images['/images/restaurants/' + file] = file;
+    });
+  });
+  return images;
+}

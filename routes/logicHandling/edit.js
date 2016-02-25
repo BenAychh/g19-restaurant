@@ -9,10 +9,12 @@ function display(res, listOfRestaurants) {
   var params = {
     title: 'Fake Yelp! - ' + restaurant.name,
     header: 'Editing: ' + restaurant.name,
-    stylesheet: '/stylesheets/new.css',
+    stylesheet: '/stylesheets/edit.css',
+    script: '/javascripts/edit.js',
     restaurant: restaurant,
     stateOptions: options('states', restaurant.state),
-    cuisineOptions: options('cuisines', restaurant.cuisine)
+    cuisineOptions: options('cuisines', restaurant.cuisine),
+    imageOptions: options('images', restaurant.image)
   };
   res.render('edit', params);
 }
