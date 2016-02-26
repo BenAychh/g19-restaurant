@@ -1,17 +1,18 @@
 {% extends 'layout.html' %}
 {% block content %}
   <article>
-    <img src="{{restaurant.image}}" id="restaurantImage" alt="" />
-    <form id="editInfo" class="" action="/restaurants/{{restaurant.id}}/edit" method="put">
+    <img src="" id="restaurantImage" alt="" />
+    <form id="editInfo" class="" action="/restaurants/new/" method="post">
       <div class="title">
-        Edit Restaurant
+        New Restaurant
       </div>
       <label for="name" class="blocking">Name</label>
-      <input type="input" id="name" name="name" required maxlength="40" value="{{restaurant.name}}" placeholder="Restaurant Name">
+      <input type="input" id="name" name="name" required maxlength="40" value="" placeholder="Restaurant Name">
       <br />
       <label for="location" class="blocking">Location</label>
-      <input type="input" id="city" name="city" required maxlength="40" value="{{restaurant.city}}" placeholder="City">
+      <input type="input" id="city" name="city" required maxlength="40" value="" placeholder="City">
       <select name="state" required>
+        <option value="">Choose</option>
         {% autoescape false %}
           {% for s in stateOptions %}
             {{s}}
@@ -21,6 +22,7 @@
       <br />
       <label for="cuisine">Cuisine</label>
       <select class="" required id="cuisine" name="cuisine">
+        <option value="">Choose</option>
         {% autoescape false %}
           {% for c in cuisineOptions %}
             {{c}}
@@ -34,18 +36,15 @@
       <br />
       <label for="image">Image</label>
       <select id="image" name="image" required>
-        <!-- <option selected value="new">
-          New Image
-        </option> -->
+        <option value="">Choose</option>
         {% autoescape false %}
           {% for imageOption in imageOptions %}
             {{imageOption}}
           {% endfor %}
         {% endautoescape %}
       </select>
-      <!-- <input type="file" id="imageFile" name="imageFile"> -->
       <br />
-      <textarea name="bio" id="bio" required rows="8" cols="40" placeholder="Short Bio">{{restaurant.description}}</textarea>
+      <textarea name="bio" id="bio" required rows="8" cols="40" placeholder="Short Bio"></textarea>
       <input type="submit" name="submit" value="Submit">
     </form>
     <a href="../"><button class="cancel">Cancel</button></a>

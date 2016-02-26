@@ -11,6 +11,6 @@
     </p>
     <div class="rateit stars" data-rateit-value="{{restaurant.rating}}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
     <a href="edit/"><button class="edit">Edit</button></a>
-    <a href="#"><button class="delete">Delete</button></a>
+    <a href="/restaurants/{{restaurant.id}}/delete"><button class="delete">Delete</button></a>
   </article>
 {% endblock %}
