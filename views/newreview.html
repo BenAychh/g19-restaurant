@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block content %}
+<article>
+  <section>
+    <img src="{{restaurant.image}}" alt="{{restaurant.cuisine}}" />
+    <p>
+      {{restaurant.cuisine_name}} cuisine<br />
+      Located in {{restaurant.city}}, {{restaurant.state}}
+    </p>
+    <p>
+      {{restaurant.description}}
+    </p>
+  </section>
+  <section class="review">
+    <form action="/restaurants/addreview/" method="POST">
+      <input type="hidden" name="restaurantID" value="{{restaurant.id}}">
+      <input type="hidden" name="restaurantName" value="{{restaurant.name}}">
+      <textarea name="review" rows="10" cols="50"></textarea>
+      <input name="rating" type="range" min="0" max="5" value="{{restaurant.rating}}" step="0.5" id="rating">
+      <div class="rateit" data-rateit-backingfld="#rating"></div><br />
+      <input type="submit" name="submit" value="Submit">
+    </form>
+  </section>
+</article>
+{% endblock %}

@@ -1,5 +1,7 @@
 var fs = require('fs');
 var path = require('path');
+var pg = require('pg');
+var connectionString = require('../../config.js');
 module.exports = {
   states: {
     AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas',
@@ -16,18 +18,42 @@ module.exports = {
     VA: 'Virginia', WA: 'Washington', WV: 'West Virginia', WI: 'Wisconsin',
     WY: 'Wyoming'
   },
-  cuisines: {
-    American: 'American', Italian: 'Italian', Thai: 'Thai',
-    Vietnamese: 'Vietnamese', Mexican: 'Mexican'
-  },
-  images: getImages()
+  cuisines: getCuisines,
+  images: getImages
 };
-function getImages() {
-  var images = {};
-  fs.readdir(path.join(__dirname, '../../public/images/restaurants'), function(err, list) {
+function getCuisines(callback) {
+  var queryString = 'select * from cuisines';
+  pg.connect(connectionString, function(err, client, done) {
+    var results = {};
+    // Handle connection errors
+    if(err) {
+     done();
+     console.log(err);
+     return console.log({ success: false, data: err});
+    }
+
+    // SQL Query > Select Data
+    var query = client.query(queryString);
+
+    // Stream results back one row at a time
+    query.on('row', function(row) {
+       results[row.id] = row.name;
+    });
+
+    // After all data is returned, close connection and return results
+    query.on('end', function() {
+       done();
+       callback(results, 'cuisineOptions', 'cuisine_id');
+    });
+  });
+}
+function getImages(callback) {
+  fs.readdir(path.join(__dirname, '../../public/images/restaurants'), function(error, list) {
+    var images = {};
     list.forEach(function(file) {
       images['/images/restaurants/' + file] = file;
     });
+    console.log(images);
+    callback(images, 'imageOptions', 'image');
   });
-  return images;
 }

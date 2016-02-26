@@ -4,9 +4,11 @@ var indexLogic = require('./logicHandling/index.js');
 var showLogic = require('./logicHandling/show.js');
 var editLogic = require('./logicHandling/edit.js');
 var newLogic = require('./logicHandling/new.js');
+var newReviewLogic = require('./logicHandling/newreview.js');
 var doEdit = require('./logicHandling/doedit.js');
 var doDelete = require('./logicHandling/dodelete.js');
 var doCreate = require('./logicHandling/docreate.js');
+var addReview = require('./logicHandling/docreatereview.js');
 var path = require('path');
 
 /* GET home page. */
@@ -33,6 +35,12 @@ router.post('/restaurants/new', function(req, res, next) {
 });
 router.get('/restaurants/:restaurant/delete', function(req, res, next) {
   doDelete(req, res);
+});
+router.get('/restaurants/:restaurant/reviews', function(req, res, next) {
+  newReviewLogic(res, req.params.restaurant);
+});
+router.post('/restaurants/addreview/', function(req, res, next) {
+  addReview(req, res);
 });
 router.get('/*', function(req, res, next) {
   var imageIndex = req.path.indexOf('/images/');

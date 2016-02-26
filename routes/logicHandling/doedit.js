@@ -8,7 +8,7 @@ function applyChanges(req, res) {
   var queryString = 'UPDATE restaurants SET ' +
     escape('name=%L ', formInfo.name) +
     escape(', image=%L ', formInfo.image) +
-    escape(', cuisine=%L ', formInfo.cuisine) +
+    escape(', cuisine_id=%L ', formInfo.cuisine) +
     escape(', city=%L ', formInfo.city) +
     escape(', state=%L ', formInfo.state) +
     ', rating=' + formInfo.rating + ' ' +

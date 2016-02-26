@@ -4,7 +4,7 @@ var connectionString = require('../../config.js');
 function applyChanges(req, res) {
   var formInfo = req.body;
   var queryString =
-    escape('INSERT into restaurants (name, image, cuisine, city, ' +
+    escape('INSERT into restaurants (name, image, cuisine_id, city, ' +
     'state, rating, description) VALUES (%L, %L, %L, %L, %L, %L, %L);', formInfo.name,
     formInfo.image, formInfo.cuisine, formInfo.city, formInfo.state,
     formInfo.rating, formInfo.bio);
@@ -24,7 +24,7 @@ function applyChanges(req, res) {
     // After all data is returned, close connection and return results
     query.on('end', function() {
        done();
-       res.redirect('/');
+       res.redirect('/restaurants/' + formInfo.name);
     });
   });
 }
