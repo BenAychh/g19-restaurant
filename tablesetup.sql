@@ -6,11 +6,10 @@ CREATE TABLE public.restaurants
   state character varying,
   rating double precision,
   description character varying,
-  id integer NOT NULL DEFAULT nextval('restaurants_id_seq'::regclass),
+  id serial,
   cuisine_id integer,
   CONSTRAINT restaurants_cuisine_id_fkey FOREIGN KEY (cuisine_id)
       REFERENCES public.cuisines (id) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 WITH (
   OIDS=FALSE
@@ -18,7 +17,7 @@ WITH (
 
 CREATE TABLE public.cuisines
 (
-  id integer NOT NULL DEFAULT nextval('cuisines_id_seq'::regclass),
+  id serial,
   name character varying,
   CONSTRAINT cuisines_pkey PRIMARY KEY (id)
 )
