@@ -9,8 +9,6 @@ function startReviewGrabbing(res, listOfRestaurants) {
   reviews(res, listOfRestaurants, display);
 }
 function display(res, listOfRestaurants, reviews) {
-  console.log('reviews: ', reviews.rows);
-  console.log(listOfRestaurants[0]);
   var name = listOfRestaurants[0].name;
   var params = {
     'title': 'Fake Yelp! - ' + name,

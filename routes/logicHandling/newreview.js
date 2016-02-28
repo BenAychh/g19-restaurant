@@ -4,7 +4,6 @@ module.exports = function(res, name) {
   restaurants(display, res, parameters);
 };
 function display(res, listOfRestaurants) {
-  console.log(listOfRestaurants[0]);
   var name = listOfRestaurants[0].name;
   var params = {
     'title': 'Fake Yelp! - New Review',

@@ -22,7 +22,6 @@ function display(pRes, listOfRestaurants) {
   constants.cuisines(callback);
 }
 function callback(results, key, value) {
-  console.log(params.restaurant);
   numberOfASyncFunctions--;
   params[key] = options(results, params.restaurant[value]);
   if (numberOfASyncFunctions === 0) {

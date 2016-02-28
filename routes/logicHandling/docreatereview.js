@@ -1,4 +1,4 @@
-var query = require('./databaseInterface.js').query;
+var query = require('./databaseInterface.js');
 var escape = require('pg-escape');
 var res;
 var restaurant;
