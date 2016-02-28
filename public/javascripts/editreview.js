@@ -9,10 +9,8 @@ function initialize() {
   var dropDownInfo = document.createElement('h2');
   dropDownInfo.id = 'dropDownInfo';
   $('body').append(dropDown);
-  var $editInfo = $('#editInfo');
+  var $editInfo = $('#editReview');
   $editInfo.submit(doEdit);
-  $("#image").change(previewImage);
-  $("#imageFile").change(previewImage);
 }
 function doEdit(event) {
   event.preventDefault();
@@ -30,7 +28,7 @@ function doEdit(event) {
         $dropDown.append('<h2>' + data + '</h2>');
         $dropDown.delay(1000).slideUp(400, function() {
           var restaurantName = $('#name').val();
-          window.location.replace('/restaurants/' + restaurantName);
+          window.location.replace('/restaurants/' + restaurantName + '/');
         });
     }
   });

@@ -8,8 +8,8 @@ function addReview(req, pRes) {
   restaurant = req.body.restaurantName;
   var queryString =
     escape('INSERT INTO reviews (text, created_date, modified_date, ' +
-    'restaurant_id, rating) values (%L, now(), now(), '
-    + req.body.restaurantID + ', ' + req.body.rating + ')',
+    'restaurant_id, rating) values (%L, now(), now(), ' +
+    req.body.restaurantID + ', ' + req.body.rating + ')',
     req.body.review);
   console.log(queryString);
   query(queryString, '', finalRender);
@@ -18,6 +18,6 @@ function finalRender(err, results) {
   if (err) {
     console.log(err);
   }
-  res.redirect('/restaurants/' + restaurant);
+  res.redirect('/restaurants/' + restaurant + '/');
 }
 module.exports = addReview;

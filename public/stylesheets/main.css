@@ -22,3 +22,11 @@ nav a {
   right: 5px;
   bottom: 5px;
 }
+nav .home {
+  font-size: 20px;
+  color: rgb(232, 232, 232);
+  position: absolute;
+  text-decoration: none;
+  right: 5px;
+  top: 5px;
+}

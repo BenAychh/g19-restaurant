@@ -11,7 +11,6 @@ function applyChanges(req, res) {
     escape(', cuisine_id=%L ', formInfo.cuisine) +
     escape(', city=%L ', formInfo.city) +
     escape(', state=%L ', formInfo.state) +
-    ', rating=' + formInfo.rating + ' ' +
     escape(', description=%L ', formInfo.bio) +
     'where id=' + restaurantID;
   query(queryString, '', function(error, results) {

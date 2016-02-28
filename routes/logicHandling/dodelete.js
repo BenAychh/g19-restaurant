@@ -6,7 +6,19 @@ function applyChanges(req, res) {
   var queryString = 'DELETE from restaurants ' +
     'where id=' + restaurantID;
   query(queryString, '', function(error, results) {
-    res.redirect('/');
+    if (error) {
+      console.error('Error: ', error);
+    } else {
+      var secondQueryString = 'DELETE from reviews ' +
+        'where restaurant_id=' + restaurantID;
+      query(secondQueryString, '', function(error, results) {
+        if (error) {
+          console.error('Error: ', error);
+        } else {
+          res.redirect('/');
+        }
+      });
+    }
   });
 }
 module.exports = applyChanges;

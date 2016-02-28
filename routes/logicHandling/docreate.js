@@ -5,12 +5,11 @@ function applyChanges(req, res) {
   var formInfo = req.body;
   var queryString =
     escape('INSERT into restaurants (name, image, cuisine_id, city, ' +
-    'state, rating, description) VALUES (%L, %L, %L, %L, %L, %L, %L);', formInfo.name,
+    'state, description) VALUES (%L, %L, %L, %L, %L, %L);', formInfo.name,
     formInfo.image, formInfo.cuisine, formInfo.city, formInfo.state,
-    formInfo.rating, formInfo.bio);
-  console.log(queryString);
+    formInfo.bio);
   query(queryString, '', function(err, results) {
-    res.redirect('/restaurants/' + formInfo.name);
+    res.redirect('/restaurants/' + formInfo.name + '/');
   });
 }
 module.exports = applyChanges;
