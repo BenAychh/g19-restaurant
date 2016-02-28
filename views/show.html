@@ -13,4 +13,11 @@
     <a href="edit/"><button class="edit">Edit</button></a>
     <a href="/restaurants/{{restaurant.id}}/delete"><button class="delete">Delete</button></a>
   </article>
+  <article id="reviews" class="reviews"><h1>Reviews</h1></article>
+  <script type="text/javascript">
+    var reviewsFromDB = {};
+    {% for review in reviews %}
+      reviewsFromDB[{{review.id}}] = {text: '{{review.text}}', rating: {{review.rating}}};
+    {% endfor %}
+  </script>
 {% endblock %}
