@@ -8,7 +8,8 @@ function addReview(req, pRes) {
   restaurant = req.body.restaurantName;
   var queryString =
     escape('INSERT INTO reviews (text, created_date, modified_date, ' +
-    'restaurant_id) values (%L, now(), now(), ' + req.body.restaurantID + ')',
+    'restaurant_id, rating) values (%L, now(), now(), '
+    + req.body.restaurantID + ', ' + req.body.rating + ')',
     req.body.review);
   console.log(queryString);
   query(queryString, '', finalRender);

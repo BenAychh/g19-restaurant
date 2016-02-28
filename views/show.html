@@ -13,11 +13,13 @@
     <a href="edit/"><button class="edit">Edit</button></a>
     <a href="/restaurants/{{restaurant.id}}/delete"><button class="delete">Delete</button></a>
   </article>
-  <article id="reviews" class="reviews"><h1>Reviews</h1></article>
+  <article id="reviews" class="reviews"><h1>Reviews</h1>
+  <a href="/restaurants/{{restaurant.name}}/reviews"><button class="newReview">New Review</button></a></article>
   <script type="text/javascript">
+    var restaurantName = '{{restaurant.name}}';
     var reviewsFromDB = {};
     {% for review in reviews %}
-      reviewsFromDB[{{review.id}}] = {text: '{{review.text}}', rating: {{review.rating}}};
+      reviewsFromDB[{{review.id}}] = {id: {{review.id}}, text: '{{review.text}}', rating: {{review.rating}}, created_date: '{{review.created_date|date('Y-m-d') }}', modified_date: '{{review.modified_date|date('Y-m-d')}}'};
     {% endfor %}
   </script>
 {% endblock %}

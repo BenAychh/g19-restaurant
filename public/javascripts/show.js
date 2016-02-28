@@ -5,6 +5,7 @@ keys.forEach(function(key) {
   article.appendChild(tempReview.section);
 });
 function Review(review) {
+  console.log(review);
   var self = this;
   var short = true;
   var longVersion = review.text;
@@ -15,15 +16,23 @@ function Review(review) {
   initialize();
   function initialize() {
     self.section = document.createElement('section');
-    self.section.innerHTML = '<div class="rateit" ' +
+    console.log(decodeURI(restaurantName));
+    self.section.innerHTML = '<div><span class="rateit" ' +
       'data-rateit-value="' + review.rating + '" data-rateit-ispreset="true"' +
-      ' data-rateit-readonly="true"></div>';
+      ' data-rateit-readonly="true"></span>' +
+      ' | Created: ' + review.created_date + ' | Modified: ' +
+      review.modified_date + '<a href="/restaurants/' +
+      restaurantName + '/' +
+      'reviews' + '/' + review.id.toString() + '/edit"' +
+      ' class="editReview">edit</a></div>';
     pReviewText = document.createElement('p');
     dots = document.createElement('span');
     pReviewText.innerHTML = shortVersion;
     self.section.appendChild(pReviewText);
-    dots.innerHTML = '...';
-    dots.addEventListener('click', switchText);
+    if (longVersion.length > 35) {
+        dots.innerHTML = '...';
+        dots.addEventListener('click', switchText);
+    }
     pReviewText.appendChild(dots);
   }
   function switchText(){

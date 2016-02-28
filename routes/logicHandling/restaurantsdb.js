@@ -1,4 +1,5 @@
 var connectionString = require('../../config.js');
+var query = require('./databaseInterface').query();
 var path = require('path');
 var pg = require('pg');
 var escape = require('pg-escape');
