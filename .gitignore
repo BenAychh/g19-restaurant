@@ -29,5 +29,5 @@ node_modules
 # Debug log from npm
 npm-debug.log
 
-# Database config file
-config.js
+# Database Passwords file
+credentials.js
