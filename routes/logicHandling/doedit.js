@@ -4,7 +4,6 @@ var query = require('./databaseInterface.js');
 function applyChanges(req, res) {
   var restaurantID = req.params.restaurant;
   var formInfo = req.body;
-  console.log(req);
   var queryString = 'UPDATE restaurants SET ' +
     escape('name=%L ', formInfo.name) +
     escape(', image=%L ', formInfo.image) +
@@ -13,6 +12,7 @@ function applyChanges(req, res) {
     escape(', state=%L ', formInfo.state) +
     escape(', description=%L ', formInfo.bio) +
     'where id=' + restaurantID;
+  console.log(queryString);
   query(queryString, '', function(error, results) {
     if (error) {
       res.send('Error' + error);

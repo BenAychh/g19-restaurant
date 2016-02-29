@@ -29,6 +29,7 @@ function getRestaurants(callback, res, parameters) {
   'group by restaurants.name, image, city, state, description, ' +
       'restaurants.id, cuisine_id, cuisines.name';
   queryString += ';';
+  console.log(queryString);
   query(queryString, '', function(error, results) {
     var resultsArray = [];
     results.rows.forEach(function(row) {
