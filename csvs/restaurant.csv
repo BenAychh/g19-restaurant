@@ -1,0 +1,6 @@
+name,image,city,state,description,cuisine_id
+Freddy's Pasta,/images/restaurants/italian.png,Denver,CO,This is a short bio for Freddy's Now I am editing shit!,2
+Another Test Restaurant,/images/restaurants/thai.jpg,San Antonio,TX,This is a bio for the best restaurant in San Antonio,5
+Louisa's Whatever,/images/restaurants/pho.jpg,Denver,CO,This is a description!,3
+Los Tacos,/images/restaurants/mexican.png,Denver,CO,"Los Tacos restaurants are owned by Fidel and Martha Leos.  Los Tacos was established in FebrFideluary 1986, and Fidel was the first person to bring soft shell tacos, a traditional Mexican dish, to the Pasadena area.  Currently, Los Tacos has a location in  (...)",5
+Pho Mazing,/images/restaurants/pho.jpg,Boulder,CO,Pho Description,3
