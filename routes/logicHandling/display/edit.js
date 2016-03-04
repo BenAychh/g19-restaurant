@@ -20,7 +20,7 @@ function showEditPage(res, req) {
       stylesheet: '/stylesheets/edit.css',
       script: '/javascripts/edit.js',
       stateOptions: queries.options(results[0], restaurant.state),
-      cuisineOptions: queries.options(results[1], restaurant.cuisine_name),
+      cuisineOptions: queries.options(results[1], restaurant.cuisine_id),
       imageOptions: queries.options(results[2], restaurant.image),
       restaurant: restaurant
     };

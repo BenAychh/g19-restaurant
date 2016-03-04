@@ -9,7 +9,7 @@
       <label for="name" class="blocking">Name</label>
       <input type="input" id="name" name="name" required maxlength="40" value="{{restaurant.name}}" placeholder="Restaurant Name">
       <br />
-      <label for="location" class="blocking">Location</label>
+      <label for="city" class="blocking">Location</label>
       <input type="input" id="city" name="city" required maxlength="40" value="{{restaurant.city}}" placeholder="City">
       <select name="state" required>
         {% autoescape false %}
@@ -20,7 +20,7 @@
       </select>
       <br />
       <label for="cuisine">Cuisine</label>
-      <select class="" required id="cuisine" name="cuisine">
+      <select class="" required id="cuisine" name="cuisine_id">
         {% autoescape false %}
           {% for c in cuisineOptions %}
             {{c}}
@@ -31,19 +31,15 @@
       <br />
       <label for="image">Image</label>
       <select id="image" name="image" required>
-        <!-- <option selected value="new">
-          New Image
-        </option> -->
         {% autoescape false %}
           {% for imageOption in imageOptions %}
             {{imageOption}}
           {% endfor %}
         {% endautoescape %}
       </select>
-      <!-- <input type="file" id="imageFile" name="imageFile"> -->
       <br />
-      <textarea name="bio" id="bio" required rows="8" cols="40" placeholder="Short Bio">{{restaurant.description}}</textarea>
-      <input type="submit" name="submit" value="Submit">
+      <textarea name="description" id="description" required rows="8" cols="40" placeholder="Short Bio">{{restaurant.description}}</textarea>
+      <input type="submit" value="Submit">
     </form>
     <a href="../"><button class="cancel">Cancel</button></a>
   </article>

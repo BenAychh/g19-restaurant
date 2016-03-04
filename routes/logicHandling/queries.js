@@ -48,7 +48,18 @@ module.exports = {
       return tempObj;
     });
   },
-
+  createRestaurant: function(parameters) {
+    return knex('restaurants').insert(parameters);
+  },
+  createReview: function(parameters) {
+    return knex('reviews').insert(parameters);
+  },
+  updateRestaurant: function(parameters, restaurantID) {
+    return knex('restaurants').where({id: restaurantID}).update(parameters);
+  },
+  updateReview: function(parameters, reviewID) {
+    return knex('reviews').where({id: reviewID}).update(parameters);
+  },
   getImages: function() {
     return new Promise(function(resolve, reject) {
       fs.readdir(path.join(__dirname, '../../public/images/restaurants'),

@@ -21,7 +21,7 @@
       </select>
       <br />
       <label for="cuisine">Cuisine</label>
-      <select class="" required id="cuisine" name="cuisine">
+      <select class="" required id="cuisine" name="cuisine_id">
         <option value="">Choose</option>
         {% autoescape false %}
           {% for c in cuisineOptions %}
@@ -40,8 +40,8 @@
         {% endautoescape %}
       </select>
       <br />
-      <textarea name="bio" id="bio" required rows="8" cols="40" placeholder="Short Bio"></textarea>
-      <input type="submit" name="submit" value="Submit">
+      <textarea name="description" id="description" required rows="8" cols="40" placeholder="Short Bio"></textarea>
+      <input type="submit" value="Submit">
     </form>
     <a href="../"><button class="cancel">Cancel</button></a>
   </article>

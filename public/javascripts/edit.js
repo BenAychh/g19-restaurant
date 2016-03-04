@@ -30,7 +30,7 @@ function doEdit(event) {
         $dropDown.append('<h2>' + data + '</h2>');
         $dropDown.delay(1000).slideUp(400, function() {
           var restaurantName = $('#name').val();
-          window.location.replace('/restaurants/' + restaurantName);
+          window.location.replace('/restaurants/' + restaurantName + '/');
         });
     }
   });

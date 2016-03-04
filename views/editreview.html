@@ -15,10 +15,10 @@
     <form id="editReview" action="/restaurants/editreview/" method="POST">
       <input type="hidden" name="reviewID" value="{{review.id}}">
       <input type="hidden" id="name" value="{{restaurant.name}}">
-      <textarea name="review" rows="10" cols="50">{{review.text}}</textarea>
+      <textarea name="text" rows="10" cols="50">{{review.text}}</textarea>
       <input name="rating" type="range" min="0" max="5" value="{{review.rating}}" step="0.5" id="rating">
       <div class="rateit" data-rateit-backingfld="#rating"></div><br />
-      <input type="submit" name="submit" value="Submit">
+      <input type="submit" value="Submit">
     </form>
     <a href="../../"><button class="cancel">Cancel</button></a>
   </section>
