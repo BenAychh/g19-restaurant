@@ -60,6 +60,9 @@ module.exports = {
   updateReview: function(parameters, reviewID) {
     return knex('reviews').where({id: reviewID}).update(parameters);
   },
+  deleteRestaurant: function(restaurantID) {
+    return knex('restaurants').where({id: restaurantID}).del();
+  },
   getImages: function() {
     return new Promise(function(resolve, reject) {
       fs.readdir(path.join(__dirname, '../../public/images/restaurants'),

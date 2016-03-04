@@ -1,24 +1,12 @@
-// var pg = require('pg');
-// var escape = require('pg-escape');
-// var query = require('./databaseInterface.js');
-// function applyChanges(req, res) {
-//   var restaurantID = req.params.restaurant;
-//   var queryString = 'DELETE from restaurants ' +
-//     'where id=' + restaurantID;
-//   query(queryString, '', function(error, results) {
-//     if (error) {
-//       console.error('Error: ', error);
-//     } else {
-//       var secondQueryString = 'DELETE from reviews ' +
-//         'where restaurant_id=' + restaurantID;
-//       query(secondQueryString, '', function(error, results) {
-//         if (error) {
-//           console.error('Error: ', error);
-//         } else {
-//           res.redirect('/');
-//         }
-//       });
-//     }
-//   });
-// }
-// module.exports = applyChanges;
+var queries = require('../queries.js');
+function deleteRestaurant(req, res) {
+  var restaurantID = req.params.restaurant;
+  queries.deleteRestaurant(req.params.restaurant)
+  .then(function() {
+    res.redirect('/');
+  })
+  .catch(function(err) {
+    res.send('Something went wrong: ' + err);
+  });
+}
+module.exports = deleteRestaurant;

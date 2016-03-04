@@ -6,11 +6,11 @@ var showEditRestaurantPage = require('./logicHandling/display/edit.js');
 var showNewRestaurantPage = require('./logicHandling/display/new.js');
 var showNewReviewPage = require('./logicHandling/display/newreview.js');
 var showEditReviewPage = require('./logicHandling/display/editreview.js');
-var doEditRestaurant = require('./logicHandling/editing/doedit.js');
-var doDeleteRestaurant = require('./logicHandling/deletion/dodelete.js');
 var doCreateRestaurant = require('./logicHandling/creation/docreate.js');
 var doCreateReview = require('./logicHandling/creation/docreatereview.js');
+var doEditRestaurant = require('./logicHandling/editing/doedit.js');
 var doEditReview = require('./logicHandling/editing/doeditreview.js');
+var doDeleteRestaurant = require('./logicHandling/deletion/dodelete.js');
 var path = require('path');
 
 /* GET home page. */
