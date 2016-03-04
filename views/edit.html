@@ -4,7 +4,7 @@
     <img src="{{restaurant.image}}" id="restaurantImage" alt="" />
     <form id="editInfo" class="" action="/restaurants/{{restaurant.id}}/edit" method="put">
       <div class="title">
-        Edit Restaurant
+        Edit {{restaurant.name}}
       </div>
       <label for="name" class="blocking">Name</label>
       <input type="input" id="name" name="name" required maxlength="40" value="{{restaurant.name}}" placeholder="Restaurant Name">

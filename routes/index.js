@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var showIndexPage = require('./logicHandling/index.js');
-var showRestaurantPage = require('./logicHandling/show.js');
-var showEditRestaurantPage = require('./logicHandling/edit.js');
-var showNewRestaurantPage = require('./logicHandling/new.js');
-var showNewReviewPage = require('./logicHandling/newreview.js');
-var showEditReviewPage = require('./logicHandling/editreview.js');
+var showIndexPage = require('./logicHandling/display/index.js');
+var showRestaurantPage = require('./logicHandling/display/show.js');
+var showEditRestaurantPage = require('./logicHandling/display/edit.js');
+var showNewRestaurantPage = require('./logicHandling/display/new.js');
+var showNewReviewPage = require('./logicHandling/display/newreview.js');
+var showEditReviewPage = require('./logicHandling/display/editreview.js');
 var doEditRestaurant = require('./logicHandling/doedit.js');
 var doDeleteRestaurant = require('./logicHandling/dodelete.js');
 var doCreateRestaurant = require('./logicHandling/docreate.js');
@@ -24,16 +24,16 @@ router.get('/restaurants/new/', function(req, res, next) {
   showNewRestaurantPage(res);
 });
 router.get('/restaurants/:restaurant', function(req, res, next) {
-  showRestaurantPage(res, req.params.restaurant);
+  showRestaurantPage(req, res);
 });
 router.get('/restaurants/:restaurant/edit', function(req, res, next) {
-  showEditRestaurantPage(res, req.params.restaurant);
+  showEditRestaurantPage(res, req);
 });
 router.get('/restaurants/:restaurant/reviews/:id/edit', function (req, res, next) {
   showEditReviewPage(req, res);
 });
 router.get('/restaurants/:restaurant/reviews', function(req, res, next) {
-  showNewReviewPage(res, req.params.restaurant);
+  showNewReviewPage(req, res);
 });
 router.put('/restaurants/:restaurant/edit', function(req, res, next) {
   doEditRestaurant(req, res);
