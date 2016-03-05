@@ -1,7 +1,6 @@
 var queries = require('../queries.js');
 function deleteRestaurant(req, res) {
-  var restaurantID = req.params.restaurant;
-  queries.deleteRestaurant(req.params.restaurant)
+  queries.deleteRestaurant(req.params.restaurantID)
   .then(function() {
     res.redirect('/');
   })

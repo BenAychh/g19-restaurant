@@ -7,6 +7,7 @@
         Edit {{restaurant.name}}
       </div>
       <label for="name" class="blocking">Name</label>
+      <input type="hidden" id="restaurantID" value="{{restaurant.id}}">
       <input type="input" id="name" name="name" required maxlength="40" value="{{restaurant.name}}" placeholder="Restaurant Name">
       <br />
       <label for="city" class="blocking">Location</label>

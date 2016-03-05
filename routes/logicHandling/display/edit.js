@@ -8,7 +8,7 @@ function showEditPage(res, req) {
   promises.push(queries.getCuisines());
   promises.push(queries.getImages());
   promises.push(queries.getRestaurants({
-    name: decodeURI(req.params.restaurant)
+    id: decodeURI(req.params.restaurantID)
   }));
   Promise.all(promises)
   .then(function(results) {

@@ -1,8 +1,6 @@
 var queries = require('../queries.js');
 function applyChanges(req, res) {
-  var restaurantID = req.params.restaurant;
-  var formInfo = req.body;
-  queries.updateRestaurant(req.body, req.params.restaurant)
+  queries.updateRestaurant(req.body, req.params.restaurantID)
   .then(function() {
     res.send('Changes Made');
   })

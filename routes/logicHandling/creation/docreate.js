@@ -1,11 +1,18 @@
 var queries = require('../queries.js');
+var validator = require('../validator.js');
 function applyChanges(req, res) {
-  queries.createRestaurant(req.body)
+  validator.uniqueRestaurant({name: req.body.name})
   .then(function() {
-    res.redirect('/restaurants/' + req.body.name + '/');
+    queries.createRestaurant(req.body)
+    .then(function() {
+      res.redirect('/restaurants/' + req.body.name + '/');
+    })
+    .catch(function(err) {
+      res.send('Something went wrong: ' + err);
+    });
   })
   .catch(function(err) {
-    res.send('Something went wrong: ' + err);
+    res.send(err);
   });
 }
 module.exports = applyChanges;

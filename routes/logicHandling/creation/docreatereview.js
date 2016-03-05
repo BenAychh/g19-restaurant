@@ -1,10 +1,9 @@
 var queries = require('../queries.js');
 function addReview(req, res) {
-  var restaurant = req.body.restaurantName;
-  delete(req.body.restaurantName);
+  var restaurantID = req.body.restaurant_id;
   queries.createReview(req.body)
   .then(function() {
-    res.redirect('/restaurants/' + restaurant + '/');
+    res.redirect('/restaurants/' + restaurantID + '/');
   })
   .catch(function(err) {
     res.send('Something went wrong: ' + err);

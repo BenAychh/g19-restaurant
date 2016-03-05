@@ -3,7 +3,7 @@ module.exports = renderEdit;
 function renderEdit(req, res) {
   var promises = [];
   promises.push(queries.getRestaurants(
-    {name: decodeURI(req.params.restaurant)}));
+    {id: decodeURI(req.params.restaurantID)}));
   promises.push(queries.getReviews({ id: req.params.id }));
   Promise.all(promises).then(function(results) {
     var restaurant = results[0][0];

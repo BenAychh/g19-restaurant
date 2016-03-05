@@ -2,7 +2,7 @@ var queries = require('../queries.js');
 var res = null;
 var listOfRestaurants;
 module.exports = function(req, res) {
-  var parameters = {name: decodeURI(req.params.restaurant)};
+  var parameters = {id: decodeURI(req.params.restaurantID)};
   queries.getRestaurants(parameters)
   .then(function(listOfRestaurants) {
     var restaurant = listOfRestaurants[0];

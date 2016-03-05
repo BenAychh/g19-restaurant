@@ -1,7 +1,7 @@
 var queries = require('../queries');
 module.exports = showNewReviewPage;
 function showNewReviewPage(req, res) {
-  queries.getRestaurants({name: decodeURI(req.params.restaurant)})
+  queries.getRestaurants({id: req.params.restaurantID})
   .then(function(results) {
     var restaurant = results[0];
     var params = {

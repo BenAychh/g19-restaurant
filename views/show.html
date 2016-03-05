@@ -14,9 +14,9 @@
     <a href="/restaurants/{{restaurant.id}}/delete"><button class="delete">Delete</button></a>
   </article>
   <article id="reviews" class="reviews"><h1>Reviews</h1>
-  <a href="/restaurants/{{restaurant.name}}/reviews/"><button class="newReview">New Review</button></a></article>
+  <a href="/restaurants/{{restaurant.id}}/reviews/"><button class="newReview">New Review</button></a></article>
   <script type="text/javascript">
-    var restaurantName = '{{restaurant.name}}';
+    var restaurantID = '{{restaurant.id}}';
     var reviewsFromDB = {};
     {% autoescape false %}
     {% for review in reviews %}

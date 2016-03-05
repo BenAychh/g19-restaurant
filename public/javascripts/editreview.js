@@ -27,8 +27,8 @@ function doEdit(event) {
     success: function(data, status) {
         $dropDown.append('<h2>' + data + '</h2>');
         $dropDown.delay(1000).slideUp(400, function() {
-          var restaurantName = $('#name').val();
-          window.location.replace('/restaurants/' + restaurantName + '/');
+          var restaurantID = $('#restaurantID').val();
+          window.location.replace('/restaurants/' + restaurantID + '/');
         });
     }
   });

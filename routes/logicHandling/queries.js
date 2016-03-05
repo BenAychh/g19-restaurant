@@ -49,6 +49,7 @@ module.exports = {
     });
   },
   createRestaurant: function(parameters) {
+    console.log(parameters);
     return knex('restaurants').insert(parameters);
   },
   createReview: function(parameters) {
