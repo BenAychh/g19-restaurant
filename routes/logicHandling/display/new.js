@@ -1,6 +1,11 @@
 var queries = require('../queries.js');
 
-module.exports = function(res) {
+module.exports = function(res, info) {
+  if (!info) {
+    info = {
+      userInput: {}
+    };
+  }
   var promises = [];
   promises.push(queries.getStates());
   promises.push(queries.getCuisines());
@@ -11,10 +16,14 @@ module.exports = function(res) {
       title: 'Fake Yelp! - New Restaurant',
       header: 'New Restaurant',
       stylesheet: '/stylesheets/new.css',
-      stateOptions: queries.options(results[0], ''),
-      cuisineOptions: queries.options(results[1], ''),
-      imageOptions: queries.options(results[2], '')
+      stateOptions: queries.options(results[0], info.userInput.state),
+      cuisineOptions: queries.options(results[1], info.userInput.cuisine_id),
+      imageOptions: queries.options(results[2], info.userInput.image),
+      userInput: info.userInput
     };
+    if (info.message) {
+      params['message'] = info['message'];
+    }
     res.render('new', params);
   })
   .catch(function(err) {

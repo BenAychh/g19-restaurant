@@ -1,16 +1,21 @@
 {% extends 'layout.html' %}
 {% block content %}
+  {% if message %}
+    <div class="warning">
+      {{message}}
+    </div>
+  {% endif %}
   <article>
-    <img src="" id="restaurantImage" alt="" />
+    <img src="{{userInput.image}}" id="restaurantImage" alt="" />
     <form id="editInfo" class="" action="/restaurants/new/" method="post">
       <div class="title">
-        Edit {{restaurant.name}}
+        Create new restaurant
       </div>
       <label for="name" class="blocking">Name</label>
-      <input type="input" id="name" name="name" required maxlength="40" value="" placeholder="Restaurant Name">
+      <input type="input" id="name" name="name" required maxlength="40" value="{{userInput.name}}" placeholder="Restaurant Name">
       <br />
       <label for="location" class="blocking">Location</label>
-      <input type="input" id="city" name="city" required maxlength="40" value="" placeholder="City">
+      <input type="input" id="city" name="city" required maxlength="40" value="{{userInput.city}}" placeholder="City">
       <select name="state" required>
         <option value="">Choose</option>
         {% autoescape false %}
@@ -40,7 +45,7 @@
         {% endautoescape %}
       </select>
       <br />
-      <textarea name="description" id="description" required rows="8" cols="40" placeholder="Short Bio"></textarea>
+      <textarea name="description" id="description" required rows="8" cols="40" placeholder="Short Bio">{{userInput.description}}</textarea>
       <input type="submit" value="Submit">
     </form>
     <a href="../"><button class="cancel">Cancel</button></a>

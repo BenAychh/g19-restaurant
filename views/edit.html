@@ -1,5 +1,10 @@
 {% extends 'layout.html' %}
 {% block content %}
+{% if restaurant.message %}
+  <div class="warning">
+    {{restaurant.message}}
+  </div>
+{% endif %}
   <article>
     <img src="{{restaurant.image}}" id="restaurantImage" alt="" />
     <form id="editInfo" class="" action="/restaurants/{{restaurant.id}}/edit" method="put">

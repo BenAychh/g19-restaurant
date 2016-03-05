@@ -1,7 +1,7 @@
 var queries = require('../queries.js');
 
 module.exports = showEditPage;
-function showEditPage(res, req) {
+function showEditPage(req, res) {
   console.log(req.params);
   var promises = [];
   promises.push(queries.getStates());

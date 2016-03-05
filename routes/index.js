@@ -27,7 +27,7 @@ router.get('/restaurants/:restaurantID', function(req, res, next) {
   showRestaurantPage(req, res);
 });
 router.get('/restaurants/:restaurantID/edit', function(req, res, next) {
-  showEditRestaurantPage(res, req);
+  showEditRestaurantPage(req, res);
 });
 router.get('/restaurants/:restaurantID/reviews/:id/edit', function (req, res, next) {
   showEditReviewPage(req, res);

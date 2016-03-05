@@ -51,7 +51,7 @@ button {
 .infoPane {
   position: absolute;
   width: 500px;
-  height: 300px;
+  height: 100px;
   background-color: rgb(57, 169, 224);
   display: none;
   top: 50%;
@@ -66,4 +66,16 @@ button {
   position: absolute;
   right: 0px;
   max-height: 50%;
+}
+.warning {
+  background-color: rgb(244, 104, 60);
+  font-size: 24px;
+  text-align: center;
+  padding: 10px;
+}
+.success {
+  background-color: rgb(0, 166, 36);
+  font-size: 24px;
+  text-align: center;
+  padding: 10px;
 }

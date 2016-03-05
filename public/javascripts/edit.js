@@ -27,11 +27,17 @@ function doEdit(event) {
     url: form.action,
     data: $data,
     success: function(data, status) {
-        $dropDown.append('<h2>' + data + '</h2>');
-        $dropDown.delay(1000).slideUp(400, function() {
+      var className = 'warning';
+      if (data === 'Changes Made') {
+        className = 'success';
+      }
+      $dropDown.append('<h2 class="' + className + '">' + data + '</h2>');
+      $dropDown.delay(1000).slideUp(400, function() {
+        if (data === 'Changes Made') {
           var restaurantID = $('#restaurantID').val();
           window.location.replace('/restaurants/' + restaurantID + '/');
-        });
+        }
+      });
     }
   });
 }
