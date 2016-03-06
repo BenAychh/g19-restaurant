@@ -27,6 +27,6 @@ module.exports = function(res, info) {
     res.render('new', params);
   })
   .catch(function(err) {
-    res.send('Something went wrong: ' + err);
+    res.send('Something went wrong (new.js): ' + err);
   });
 };

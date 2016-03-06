@@ -14,7 +14,7 @@ function addReview(req, res) {
       res.redirect('/restaurants/' + restaurantID + '/');
     })
     .catch(function(err) {
-      res.send('Something went wrong1: ' + err);
+      res.send('Something went wrong (docreatereview.js #1): ' + err);
     });
   })
   .catch(function(err) {
@@ -35,7 +35,7 @@ function addReview(req, res) {
       showEditReviewPage(params, res);
     }).
     catch(function(err) {
-      res.send('Something went wrong: ' + err);
+      res.send('Something went wrong (docreatereview.js #2): ' + err);
     });
   });
 

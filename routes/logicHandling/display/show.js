@@ -24,6 +24,6 @@ module.exports = function(req, res) {
     res.render('show', params);
   })
   .catch(function(err) {
-    res.send('Something went wrong: ' + err);
+    res.send('Something went wrong (show.js): ' + err);
   });
 };

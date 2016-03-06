@@ -27,6 +27,6 @@ function showEditPage(req, res) {
     res.render('edit', params);
   })
   .catch(function(err) {
-    res.send('Something went wrong: ' + err);
+    res.send('Something went wrong (edit.js): ' + err);
   });
 }

@@ -5,7 +5,7 @@ function deleteRestaurant(req, res) {
     res.redirect('/');
   })
   .catch(function(err) {
-    res.send('Something went wrong: ' + err);
+    res.send('Something went wrong (dodelete.js): ' + err);
   });
 }
 module.exports = deleteRestaurant;

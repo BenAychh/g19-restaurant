@@ -9,7 +9,7 @@ function applyChanges(req, res) {
       res.redirect('/restaurants/' + req.body.name + '/');
     })
     .catch(function(err) {
-      res.send('Something went wrong: ' + err);
+      res.send('Something went wrong (docreate.js): ' + err);
     });
   })
   .catch(function(err) {
