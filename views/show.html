@@ -20,7 +20,7 @@
     var reviewsFromDB = {};
     {% autoescape false %}
     {% for review in reviews %}
-      reviewsFromDB[{{review.id}}] = {id: {{review.id}}, text: '{{review.text}}', rating: {{review.rating}}, created_date: '{{review.created_date|date('Y-m-d') }}', modified_date: '{{review.modified_date|date('Y-m-d')}}'};
+      reviewsFromDB[{{review.id}}] = {id: {{review.id}}, text: '{{review.text}}', rating: {{review.rating}}, created_date: '{{review.created_date|date('Y-m-d') }}', modified_date: '{{review.modified_date|date('Y-m-d')}}', reviewed_by: '{{review.reviewer_name}}'};
     {% endfor %}
     {% endautoescape %}
   </script>

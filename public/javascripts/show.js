@@ -19,9 +19,11 @@ function Review(review) {
     self.section.innerHTML = '<div><span class="rateit" ' +
       'data-rateit-value="' + review.rating + '" data-rateit-ispreset="true"' +
       ' data-rateit-readonly="true"></span>' +
-      ' | Created: ' + review.created_date + ' | Modified: ' +
-      review.modified_date + '<a href="/restaurants/' +
-      restaurantID + '/' +
+      ' | <strong>Reviewed By:</strong> <span class="name">'
+        + review.reviewed_by + '</span>' + 
+      ' | <strong>Created:</strong> ' + review.created_date +
+      ' | <strong>Modified:</strong> ' + review.modified_date +
+      '<a href="/restaurants/' + restaurantID + '/' +
       'reviews' + '/' + review.id.toString() + '/edit"' +
       ' class="editReview">edit</a></div>';
     pReviewText = document.createElement('p');
