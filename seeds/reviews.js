@@ -1,6 +1,6 @@
 var seeder = require('knex-csv-seeder').seeder.seed;
 
 exports.seed = seeder({
-  table: 'restaurants',
-  file: 'data/restaurant.csv',
+  table: 'reviews',
+  file: 'data/reviews.csv',
 });

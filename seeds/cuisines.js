@@ -2,5 +2,5 @@ var seeder = require('knex-csv-seeder').seeder.seed;
 
 exports.seed = seeder({
   table: 'cuisines',
-  file: '../csvs/cuisines.csv',
+  file: 'data/cuisines.csv',
 });
