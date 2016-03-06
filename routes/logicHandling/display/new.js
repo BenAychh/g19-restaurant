@@ -12,6 +12,7 @@ module.exports = function(res, info) {
   promises.push(queries.getImages());
   Promise.all(promises)
   .then(function(results) {
+    console.log('info: ' + info.userInput);
     var params = {
       title: 'Fake Yelp! - New Restaurant',
       header: 'New Restaurant',
