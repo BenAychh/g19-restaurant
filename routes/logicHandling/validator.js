@@ -17,9 +17,12 @@ function uniqueRestaurant(params, currentID) {
   });
 }
 function uniqueReviewer(params) {
+  if(params.reviewer_name) {
+    params.reviewer_name = params.reviewer_name.toLowerCase();
+  }
   return queries.getReviews(params)
   .then(function(results) {
-    console.log('results: results');
+    console.log('results: ' + results);
     if (results.length === 0) {
       return Promise.resolve();
     } else {
