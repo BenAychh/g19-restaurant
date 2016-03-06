@@ -6,6 +6,7 @@ var path = require('path');
 
 module.exports = {
   getRestaurants: function (parameters) {
+    var integerKeys = ['id', 'cuisine_id'];
     var queryString = multiline.stripIndent(function() {/*
       select restaurants.name, image, city, state, avg(reviews.rating) as rating, description, restaurants.id, cuisine_id, cuisines.name as cuisine_name
         from restaurants
@@ -23,7 +24,12 @@ module.exports = {
         } else {
           queryString += ' AND ';
         }
-        queryString += escape('restaurants.%I = %L', key, parameters[key]);
+        if (integerKeys.indexOf(key) === -1){
+          queryString += escape('lower(restaurants.%I) like lower(%L)',
+              key, parameters[key]);
+        } else {
+          queryString += escape('restaurants.%I = %L', key, parameters[key]);
+        }
       });
     }
     queryString +=
@@ -52,6 +58,9 @@ module.exports = {
     return knex('restaurants').insert(parameters);
   },
   createReview: function(parameters) {
+    if (parameters.reviewer_name) {
+      parameters.reviewer_name = parameters.reviewer_name.toLowerCase();
+    }
     return knex('reviews').insert(parameters);
   },
   updateRestaurant: function(parameters, restaurantID) {

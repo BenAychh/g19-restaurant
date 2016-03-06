@@ -3,7 +3,7 @@ module.exports = renderEdit;
 function renderEdit(req, res) {
   var promises = [];
   promises.push(queries.getRestaurants(
-    {id: decodeURI(req.params.restaurantID)}));
+    {id: req.params.restaurantID}));
   promises.push(queries.getReviews({ id: req.params.id }));
   Promise.all(promises).then(function(results) {
     var restaurant = results[0][0];
@@ -16,6 +16,11 @@ function renderEdit(req, res) {
       'restaurant': restaurant,
       'review': results[1][0]
     };
+    if (req.formInfo) {
+      params.review = req.formInfo;
+      params['originalReview'] = results[1][0].text;
+
+    }
     res.render('editreview', params);
   });
 }

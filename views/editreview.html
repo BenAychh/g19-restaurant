@@ -11,6 +11,20 @@
       {{restaurant.description}}
     </p>
   </section>
+  {% if originalReview %}
+    <div class="warning">
+      <center>
+        It looks like you've already submitted a review, please merge the changes below.
+      </center>
+      <br />
+      <section class="original">
+        <h2>Orignal Review:</h2>
+        <p>
+          {{originalReview}}
+        </p>
+      </section>
+    </div>
+  {% endif %}
   <section class="review">
     <form id="editReview" action="/restaurants/editreview/" method="POST">
       <input type="hidden" name="reviewID" value="{{review.id}}">

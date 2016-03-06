@@ -10,6 +10,12 @@ function showNewReviewPage(req, res) {
       'stylesheet': '/stylesheets/newreview.css',
       'restaurant': restaurant
     };
+    if (req.formInfo) {
+      params['formInfo'] = req.formInfo;
+    }
+    if (req.originalReview) {
+      params['originalReview'] = req.originalReview;
+    }
     res.render('newreview', params);
   });
 }
