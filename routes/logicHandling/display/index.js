@@ -1,5 +1,5 @@
 var queries = require('../queries');
-module.exports = showIndexPage
+module.exports = showIndexPage;
 function showIndexPage(res) {
   queries.getRestaurants().then(function(results) {
     var options = {
