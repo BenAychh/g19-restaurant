@@ -1,4 +1,4 @@
-
+if (!process.env.NODE_ENV) { require('dotenv').config(); }
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -6,11 +6,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swig = require('swig').Swig;
-
-
+var cookieSession = require('cookie-session');
+var passport = require('./lib/auth.js');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var auth = require('./routes/auth');
 
 
 var app = express();
@@ -28,10 +29,17 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cookieSession({
+  name: 'linkedin-oauth-session-example',
+  keys: [process.env.COOKIE_KEY1, process.env.COOKIE_KEY2]
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.use('/auth/', auth);
 app.use('/', routes);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
