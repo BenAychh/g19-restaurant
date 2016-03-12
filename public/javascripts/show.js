@@ -20,12 +20,15 @@ function Review(review) {
       'data-rateit-value="' + review.rating + '" data-rateit-ispreset="true"' +
       ' data-rateit-readonly="true"></span>' +
       ' | <strong>Reviewed By:</strong> <span class="name">'
-        + review.reviewed_by + '</span>' + 
+        + review.reviewed_by + '</span>' +
       ' | <strong>Created:</strong> ' + review.created_date +
-      ' | <strong>Modified:</strong> ' + review.modified_date +
-      '<a href="/restaurants/' + restaurantID + '/' +
-      'reviews' + '/' + review.id.toString() + '/edit"' +
-      ' class="editReview">edit</a></div>';
+      ' | <strong>Modified:</strong> ' + review.modified_date;
+      if (user_id == review.user_id) {
+        self.section.innerHTML += '<a href="/restaurants/' + restaurantID + '/' +
+        'reviews' + '/' + review.id.toString() + '/edit"' +
+        ' class="editReview">edit</a>';
+      }
+      self.section.innerHTML += '</div>';
     pReviewText = document.createElement('p');
     dots = document.createElement('span');
     pReviewText.innerHTML = shortVersion;

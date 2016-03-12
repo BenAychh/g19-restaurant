@@ -5,7 +5,7 @@ function addReview(req, res) {
   var restaurantID = req.body.restaurant_id;
   validator.uniqueReviewer({
     restaurant_id: restaurantID,
-    'reviewer_name': req.body.reviewer_name
+    'reviews.user_id': req.body.user_id
   })
   .then(function() {
     var restaurantID = req.body.restaurant_id;
@@ -20,7 +20,7 @@ function addReview(req, res) {
   .catch(function(err) {
     queries.getReviews({
       restaurant_id: restaurantID,
-      'reviewer_name': req.body.reviewer_name.toLowerCase()
+      'user_id': req.body.user_id
     })
     .then(function(data) {
       console.log(data);

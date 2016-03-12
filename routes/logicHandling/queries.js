@@ -42,7 +42,9 @@ module.exports = {
   },
 
   getReviews: function(parameters) {
-    return knex('reviews').select().where(parameters);
+    return knex('reviews').select(knex.raw('reviews.id, text, created_date, modified_date, rating, reviews.user_id, username'))
+    .leftJoin(knex.raw('github_users on (github_users.user_id = reviews.user_id)'))
+    .where(parameters);
   },
 
   getCuisines: function() {
@@ -71,6 +73,16 @@ module.exports = {
   },
   deleteRestaurant: function(restaurantID) {
     return knex('restaurants').where({id: restaurantID}).del();
+  },
+  switchAdmin: function(id) {
+    return knex('users').where({id: id}).select('is_admin')
+      .then(function(results) {
+        var newAdminStatus = !results[0].is_admin;
+        return knex('users').where({id: id}).update({is_admin: newAdminStatus})
+        .then(function() {
+          return newAdminStatus;
+        });
+      });
   },
   getImages: function() {
     return new Promise(function(resolve, reject) {

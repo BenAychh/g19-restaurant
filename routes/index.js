@@ -11,47 +11,58 @@ var doCreateReview = require('./logicHandling/creation/docreatereview.js');
 var doEditRestaurant = require('./logicHandling/editing/doedit.js');
 var doEditReview = require('./logicHandling/editing/doeditreview.js');
 var doDeleteRestaurant = require('./logicHandling/deletion/dodelete.js');
+var helpers = require('../lib/helpers.js');
 var path = require('path');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  showIndexPage(res);
+  showIndexPage(req, res);
 });
 router.get('/restaurants/', function(req, res, next) {
   res.redirect('/');
 });
-router.get('/restaurants/new/', function(req, res, next) {
-  showNewRestaurantPage(res);
+router.get('/restaurants/new/', helpers.ensureAdmin, function(req, res, next) {
+  showNewRestaurantPage(req, res);
 });
 router.get('/restaurants/:restaurantID', function(req, res, next) {
   showRestaurantPage(req, res);
 });
-router.get('/restaurants/:restaurantID/edit', function(req, res, next) {
+router.get('/restaurants/:restaurantID/edit', helpers.ensureAdmin,
+      function(req, res, next) {
   showEditRestaurantPage(req, res);
 });
-router.get('/restaurants/:restaurantID/reviews/:id/edit', function (req, res, next) {
+router.get('/restaurants/:restaurantID/reviews/:id/edit', helpers.checkReview,
+      function (req, res, next) {
   showEditReviewPage(req, res);
 });
-router.get('/restaurants/:restaurantID/reviews', function(req, res, next) {
+router.get('/restaurants/:restaurantID/reviews',
+      // function(req, res, next) {
+      //   req.flash('redirect', req.originalUrl);
+      //   next();
+      // },
+      helpers.ensureAuthenticated,
+      helpers.checkAlreadyReviewed,
+      function(req, res, next) {
   showNewReviewPage(req, res);
 });
-router.put('/restaurants/:restaurantID/edit', function(req, res, next) {
+router.put('/restaurants/:restaurantID/edit', helpers.ensureAdmin,
+      function(req, res, next) {
   doEditRestaurant(req, res);
 });
-router.post('/restaurants/new', function(req, res, next) {
+router.post('/restaurants/new', helpers.ensureAdmin, function(req, res, next) {
   doCreateRestaurant(req, res);
 });
-router.get('/restaurants/:restaurantID/delete', function(req, res, next) {
+router.get('/restaurants/:restaurantID/delete', helpers.ensureAdmin,
+      function(req, res, next) {
   doDeleteRestaurant(req, res);
 });
-router.post('/restaurants/addreview/', function(req, res, next) {
+router.post('/restaurants/addreview/', helpers.ensureAuthenticated,
+      function(req, res, next) {
   doCreateReview(req, res);
 });
-router.put('/restaurants/editreview/', function(req, res, next) {
+router.put('/restaurants/editreview/', helpers.checkReview,
+      function(req, res, next) {
   doEditReview(req, res);
-});
-router.get('/*', function(req, res, next) {
-  res.status(404).send('Not Found');
 });
 
 module.exports = router;

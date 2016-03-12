@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var swig = require('swig').Swig;
 var cookieSession = require('cookie-session');
 var passport = require('./lib/auth.js');
+var flash = require('connect-flash');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -35,6 +36,7 @@ app.use(cookieSession({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
 

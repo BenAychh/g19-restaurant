@@ -16,7 +16,10 @@
       <input type="hidden" name="restaurant_id" value="{{restaurant.id}}">
       <input type="hidden" name="created_date" value="now()">
       <input type="hidden" name="modified_date" value="now()">
-      <input type="text" name="reviewer_name" value="{{formInfo.reviewer_name}}" placeholder="Your Name">
+      <input type="hidden" name="user_id" value="{{user.local.id}}">
+      <p class="reviewerName">
+        Your Name: <strong>{{user.github.username}}</strong>
+      </p>
       <textarea name="text" rows="10" cols="50">{{formInfo.text}}</textarea>
       <input name="rating" type="range" min="0" max="5" value="{{formInfo.rating}}" step="0.5" id="rating">
       <div class="rateit" data-rateit-backingfld="#rating"></div><br />

@@ -8,7 +8,8 @@ function showNewReviewPage(req, res) {
       'title': 'Fake Yelp! - New Review',
       'header': 'New Review for ' + restaurant.name,
       'stylesheet': '/stylesheets/newreview.css',
-      'restaurant': restaurant
+      'restaurant': restaurant,
+      user: req.user
     };
     if (req.formInfo) {
       params['formInfo'] = req.formInfo;

@@ -22,7 +22,8 @@ function showEditPage(req, res) {
       stateOptions: queries.options(results[0], restaurant.state),
       cuisineOptions: queries.options(results[1], restaurant.cuisine_id),
       imageOptions: queries.options(results[2], restaurant.image),
-      restaurant: restaurant
+      restaurant: restaurant,
+      user: req.user
     };
     res.render('edit', params);
   })

@@ -20,7 +20,8 @@ module.exports = function(res, info) {
       stateOptions: queries.options(results[0], info.userInput.state),
       cuisineOptions: queries.options(results[1], info.userInput.cuisine_id),
       imageOptions: queries.options(results[2], info.userInput.image),
-      userInput: info.userInput
+      userInput: info.userInput,
+      user: req,user
     };
     if (info.message) {
       params['message'] = info['message'];

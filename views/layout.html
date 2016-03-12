@@ -11,9 +11,16 @@
   </head>
   <body>
     <nav>
-      <a href="/" class="home">Home</a>
+      {% if user %}
+        <a href="/auth/logout?redirect={{redirect}}" class="log">Log Out</a>
+      {% else %}
+        <a href="/auth/github?redirect={{redirect}}" class="log">Log In</a>
+      {% endif %}
+        <a href="/" class="home">Home</a>
       {{ header }}
-      <a href="/restaurants/new/">new restaurant</a>
+      {% if user.local.is_admin %}
+        <a href="/restaurants/new/">new restaurant</a>
+      {% endif %}
     </nav>
     {% block content %}
     {% endblock %}

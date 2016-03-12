@@ -10,17 +10,23 @@
       {{restaurant.description}}
     </p>
     <div class="rateit stars" data-rateit-value="{{restaurant.rating}}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
-    <a href="edit/"><button class="edit">Edit</button></a>
-    <a href="/restaurants/{{restaurant.id}}/delete"><button class="delete">Delete</button></a>
+    {% if user.local.is_admin %}
+      <a href="edit/"><button class="edit">Edit</button></a>
+      <a href="/restaurants/{{restaurant.id}}/delete"><button class="delete">Delete</button></a>
+    {% endif %}
   </article>
   <article id="reviews" class="reviews"><h1>Reviews</h1>
-  <a href="/restaurants/{{restaurant.id}}/reviews/"><button class="newReview">New Review</button></a></article>
+    {% if canCreateReview %}
+      <a href="/restaurants/{{restaurant.id}}/reviews/"><button class="newReview">New Review</button></a></article>
+    {% endif %}
   <script type="text/javascript">
+    var user_id =
+    {% if user.local.id %} {{user.local.id}} {% else %} -1 {% endif %};
     var restaurantID = '{{restaurant.id}}';
     var reviewsFromDB = {};
     {% autoescape false %}
     {% for review in reviews %}
-      reviewsFromDB[{{review.id}}] = {id: {{review.id}}, text: '{{review.text}}', rating: {{review.rating}}, created_date: '{{review.created_date|date('Y-m-d') }}', modified_date: '{{review.modified_date|date('Y-m-d')}}', reviewed_by: '{{review.reviewer_name}}'};
+      reviewsFromDB[{{review.id}}] = {id: {{review.id}}, text: '{{review.text}}', rating: {{review.rating}}, created_date: '{{review.created_date|date('Y-m-d') }}', modified_date: '{{review.modified_date|date('Y-m-d')}}', reviewed_by: '{{review.username}}', user_id: '{{review.user_id}}'};
     {% endfor %}
     {% endautoescape %}
   </script>

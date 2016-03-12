@@ -14,7 +14,8 @@ function renderEdit(req, res) {
       'stylesheet': '/stylesheets/editreview.css',
       'script': '/javascripts/editreview.js',
       'restaurant': restaurant,
-      'review': results[1][0]
+      'review': results[1][0],
+      user: req.user
     };
     if (req.formInfo) {
       params.review = req.formInfo;
