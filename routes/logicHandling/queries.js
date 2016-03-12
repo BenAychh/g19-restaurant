@@ -35,7 +35,6 @@ module.exports = {
     queryString +=
     ' group by restaurants.name, image, city, state, description, ' +
         'restaurants.id, cuisine_id, cuisines.name';
-    console.log(queryString);
     return knex.raw(queryString).then(function(results) {
       return results.rows;
     });

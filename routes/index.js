@@ -36,10 +36,10 @@ router.get('/restaurants/:restaurantID/reviews/:id/edit', helpers.checkReview,
   showEditReviewPage(req, res);
 });
 router.get('/restaurants/:restaurantID/reviews',
-      // function(req, res, next) {
-      //   req.flash('redirect', req.originalUrl);
-      //   next();
-      // },
+      function(req, res, next) {
+        req.flash('redirect', req.originalUrl);
+        next();
+      },
       helpers.ensureAuthenticated,
       helpers.checkAlreadyReviewed,
       function(req, res, next) {
@@ -60,7 +60,7 @@ router.post('/restaurants/addreview/', helpers.ensureAuthenticated,
       function(req, res, next) {
   doCreateReview(req, res);
 });
-router.put('/restaurants/editreview/', helpers.checkReview,
+router.put('/restaurants/editreview/:id', helpers.checkReview,
       function(req, res, next) {
   doEditReview(req, res);
 });

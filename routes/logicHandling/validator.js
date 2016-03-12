@@ -3,12 +3,10 @@ var queries = require('./queries.js');
 function uniqueRestaurant(params, currentID) {
   return queries.getRestaurants(params)
   .then(function(results) {
-    console.log(results);
     if (results.length === 0) {
       return Promise.resolve();
     }
     if (currentID && results.length === 1) {
-      console.log(results[0].id + ' / ' + currentID);
       if (results[0].id == currentID) {
         return Promise.resolve();
       }
@@ -22,7 +20,6 @@ function uniqueReviewer(params) {
   }
   return queries.getReviews(params)
   .then(function(results) {
-    console.log('results: ' + results);
     if (results.length === 0) {
       return Promise.resolve();
     } else {

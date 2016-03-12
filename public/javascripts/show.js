@@ -5,7 +5,6 @@ keys.forEach(function(key) {
   article.appendChild(tempReview.section);
 });
 function Review(review) {
-  console.log(review);
   var self = this;
   var short = true;
   var longVersion = review.text;

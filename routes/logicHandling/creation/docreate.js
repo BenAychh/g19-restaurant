@@ -17,7 +17,6 @@ function applyChanges(req, res) {
       message: 'That restaurant already exists',
       userInput: req.body
     };
-    console.log(params);
     showNewRestaurantPage(res, params);
   });
 }

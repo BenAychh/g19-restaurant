@@ -23,7 +23,6 @@ function addReview(req, res) {
       'user_id': req.body.user_id
     })
     .then(function(data) {
-      console.log(data);
       req.body.id = data[0].id;
       var params = {
         params: {

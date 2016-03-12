@@ -15,7 +15,9 @@ router.get('/github/', function(req, res, next) {
 
 router.get('/github/callback/', passport.authenticate('github', { failureRedirect: '/'}), function(req, res, next) {
   var redirect = req.flash('redirect');
-  console.log('redirect: ', redirect);
+  if (redirect[0]) {
+    redirect = redirect[redirect.length - 1];
+  }
   if (redirect) {
     res.redirect(redirect);
   } else {
