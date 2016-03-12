@@ -18,9 +18,11 @@ router.get('/github/callback/', passport.authenticate('github', { failureRedirec
   if (redirect[0]) {
     redirect = redirect[redirect.length - 1];
   }
-  if (redirect) {
+  if (redirect.length !== 0) {
+    console.log('redirect: ' + redirect);
     res.redirect(redirect);
   } else {
+    console.log('redirect to home');
     res.redirect('/');
   }
 });
